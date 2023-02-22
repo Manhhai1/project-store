@@ -33,3 +33,5 @@ app.get('/', (req, res) => {
 })
 app.use('/user', userRouter)
 app.use('/api', categoryRouter)
+app.use('/api', require('./routes/upload'))
+app.use('/api', require('./routes/productRouter') )
