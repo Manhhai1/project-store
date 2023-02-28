@@ -14,7 +14,7 @@ router.post('/upload', (req, res) => {
     try {
         let file = req.files.file
         if (!file) return res.status(400).json({ message: 'no file were uploaded' })
-        if (file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
+        if (file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png' &&file.mimetype!=='image/webp') {
             removeTmp(file.tempFilePath)
             return res.status(400).json({ message: 'format file is incorrect' })
         }

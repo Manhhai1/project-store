@@ -2,11 +2,6 @@ const { Timestamp } = require("mongodb");
 const mongoose = require("mongoose");
 
 let productSchema = new mongoose.Schema({
-    product_id: {
-        type: String,
-        require: true,
-        trim: true,
-    },
     title: {
         type: String,
         require: true,
@@ -17,27 +12,24 @@ let productSchema = new mongoose.Schema({
         require: true,
         trim: true,
     },
-    description: {
+    descriptionMarkdown: {
         type: String,
         require: true,
         trim: true,
     },
-    content: {
+    descriptionHTML: {
         type: String,
         require: true,
         trim: true,
     },
     images: {
-        type: Object,
+        type: Array,
         require: true,
     },
-    checked: {
-        type: Boolean,
-        default: false,
-    },
-    sold: {
-        type: Number,
-        default: 0
+    type: {
+        type: String,
+        require: true,
+        trim: true,
     }
 
 }, {

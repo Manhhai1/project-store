@@ -5,7 +5,7 @@ require('dotenv').config()
 const userController = {
     register: async (req, res) => {
         try {
-            let { username, password, email } = req.body
+            let { firstname, lastname, password, email } = req.body
             let user = await Users.findOne({ email })
             if (user) return res.status(400).json({ message: 'The email  already exists' })
 
@@ -13,7 +13,7 @@ const userController = {
             const hashPassword = bcrypt.hashSync(password, 10);
             password = hashPassword
             const newUser = new Users({
-                email, password, username
+                email, password, firstname, lastname
             })
             await newUser.save()
             const accessToken = createAccessToken({ id: newUser._id })
@@ -40,7 +40,7 @@ const userController = {
                 httpOnly: true,
                 path: 'user/refesh_token'
             })
-            res.json({ accessToken })
+            res.json({ accessToken, user })
 
         } catch (error) {
             return res.status(500).json({ message: error.message })

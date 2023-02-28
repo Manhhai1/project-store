@@ -28,7 +28,7 @@ class APIfeatures {
     paginating() {
         const page = this.queryString.page || 1
         const limit = this.queryString.limit || 4
-        const skip = (page-1)*limit
+        const skip = (page - 1) * limit
         this.query = this.query.skip(skip).limit(limit)
         return this
     }
@@ -40,17 +40,17 @@ const productController = {
             featrues.filltering().sorting().paginating()
             const products = await featrues.query
 
-            return res.json(products)
+            return res.status(200).json(products)
         } catch (error) {
             return res.status(500).json({ message: error.message })
         }
     },
     postProduct: async (req, res) => {
         try {
-            const { product_id, title, price, description, content, images, checked, sold } = req.body
-            const product = await Products.findOne({ product_id: product_id })
+            const { title, price, descriptionMarkdown, descriptionHTML, type, images } = req.body
+            const product = await Products.findOne({ title: title })
             if (product) return res.status(400).json({ message: 'product realdy exist' })
-            const newProduct = new Products({ product_id, title, price, description, content, images, checked, sold })
+            const newProduct = new Products({ title, price, descriptionMarkdown, descriptionHTML, images, type })
             await newProduct.save()
             return res.json({ message: "create new product" })
         } catch (error) {
