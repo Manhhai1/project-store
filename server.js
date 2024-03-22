@@ -16,7 +16,7 @@ app.use(fileUpload({
 }))
 
 let URL = process.env.MONGODB_URL
-mongoose.connect('mongodb+srv://haikt123:Haimanh23072000@cluster0.5hebbij.mongodb.net/mydb?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://haikt12345:123@cluster0.5hebbij.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
     .then(() => console.log('connect success to MongoDB'));
 
 mongoose.set('strictQuery', false)
@@ -34,4 +34,4 @@ app.get('/', (req, res) => {
 app.use('/user', userRouter)
 app.use('/api', categoryRouter)
 app.use('/api', require('./routes/upload'))
-app.use('/api', require('./routes/productRouter') )
+app.use('/api', require('./routes/productRouter'))

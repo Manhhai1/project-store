@@ -3,4 +3,4 @@ const mongodb = require('mongodb');
 // import { MongoClient } from 'mongodb'
 
 // Connection URL
-const url = 'mongodb+srv://haikt123:Haimanh23072000@cluster0.5hebbij.mongodb.net/mydb?retryWrites=true&w=majority'
+const url = 'mmongodb+srv://haikt12345:123@cluster0.5hebbij.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0ongodb+srv://haikt12345:123@cluster0.5hebbij.mongodb.net/mydb?retryWrites=true&w=majority'
